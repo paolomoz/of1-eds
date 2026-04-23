@@ -1,20 +1,17 @@
-import { getMetadata } from '../../scripts/aem.js';
-import { loadFragment } from '../fragment/fragment.js';
-
 /**
- * loads and decorates the footer
- * @param {Element} block The footer block element
+ * of1 footer — loads footer.plain.html into the <footer> element.
  */
+
 export default async function decorate(block) {
-  // load footer as fragment
-  const footerMeta = getMetadata('footer');
-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
-  const fragment = await loadFragment(footerPath);
+  const res = await fetch(`${window.hlx.codeBasePath}/footer.plain.html`);
+  if (!res.ok) return;
+  const html = await res.text();
 
-  // decorate footer DOM
-  block.textContent = '';
-  const footer = document.createElement('div');
-  while (fragment.firstElementChild) footer.append(fragment.firstElementChild);
+  const footer = block.closest('footer') || block;
+  footer.classList.add('site-footer');
+  block.remove();
 
-  block.append(footer);
+  const wrap = document.createElement('div');
+  wrap.innerHTML = html;
+  while (wrap.firstChild) footer.append(wrap.firstChild);
 }

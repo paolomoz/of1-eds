@@ -1,0 +1,7 @@
+/*
+ * interest-modal styling lives in page CSS for now (page-landing.css etc.).
+ * This file is intentionally empty.
+ *
+ * Cleanup: when we ship all 3 pages, hoist the shared .interest-* rules out
+ * of the page sheets and into this file (loaded alongside the block).
+ */
