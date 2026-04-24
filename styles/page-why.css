@@ -1,0 +1,408 @@
+/*
+ * of1 — /why (editorial) page styles
+ *
+ * Verbatim lift from deploy/why.html inline <style> block, minus :root
+ * tokens that match styles.css and universal base that's already there.
+ * :root overrides set below are intentional — /why uses a smaller
+ * type scale than the landing page.
+ */
+
+/* ========================================
+   TOKEN OVERRIDES — editorial scale
+   ======================================== */
+
+:root {
+  --heading-xxl: clamp(40px, 5vw, 72px);
+  --heading-xl: clamp(32px, 4vw, 56px);
+  --heading-lg: clamp(24px, 3vw, 40px);
+  --heading-md: clamp(20px, 2vw, 28px);
+  --body: clamp(13px, 1.1vw, 16px);
+  --body-sm: clamp(12px, 1vw, 14px);
+  --eyebrow: 0.65rem;
+  --pull-quote: clamp(1.4rem, 2.5vw, 2.2rem);
+
+  --line-height-heading: 1.1;
+  --line-height-body: 1.9;
+  --line-height-pull-quote: 1.5;
+
+  --reading-width: 680px;
+}
+
+/* ========================================
+   READING WIDTH UTILITY
+   ======================================== */
+
+.reading {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+/* ========================================
+   BG-LIFTED OVERRIDES — editorial
+   ======================================== */
+
+.bg-lifted {
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.bg-lifted p { color: rgba(28, 25, 23, 0.85) !important; }
+
+.bg-lifted .pull-quote {
+  border-top-color: rgba(10, 10, 10, 0.08);
+  border-bottom-color: rgba(10, 10, 10, 0.08);
+}
+
+.bg-lifted .pull-quote blockquote {
+  color: var(--color-bg);
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem var(--section-padding);
+  background: rgba(28, 25, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-fg-faint);
+}
+
+.site-logo {
+  font-family: var(--body-font-family);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-fg);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.site-nav a {
+  font-family: var(--body-font-family);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover { color: var(--color-fg); }
+.site-nav a.active { color: var(--color-fg); }
+
+.site-nav .nav-cta {
+  padding: 0.4rem 1.2rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
+
+.site-nav .nav-cta:hover {
+  background: var(--color-fg);
+  color: var(--color-bg);
+}
+
+/* ========================================
+   SECTION 1: EDITORIAL HERO
+   ======================================== */
+
+.editorial-hero {
+  padding: 8rem var(--section-padding) 5rem;
+}
+
+.editorial-hero .hero-eyebrow {
+  font-family: var(--body-font-family);
+  font-size: var(--eyebrow);
+  letter-spacing: var(--letter-spacing-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-fg-muted);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.editorial-hero h1 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-xxl);
+  font-weight: 700;
+  line-height: var(--line-height-heading);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.editorial-hero .lede {
+  font-family: var(--body-font-family);
+  font-size: var(--body);
+  line-height: var(--line-height-body);
+  color: var(--color-fg-dim);
+}
+
+/* ========================================
+   BODY SECTIONS
+   ======================================== */
+
+.body-section {
+  padding: var(--section-padding);
+}
+
+.body-section h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-lg);
+  font-weight: 600;
+  line-height: var(--line-height-heading);
+  margin-bottom: 2rem;
+}
+
+.body-section h2 em {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.body-section p {
+  font-family: var(--body-font-family);
+  font-size: var(--body);
+  line-height: var(--line-height-body);
+  color: var(--color-fg-dim);
+  margin-bottom: 1.5rem;
+}
+
+.body-section p:last-child {
+  margin-bottom: 0;
+}
+
+.body-section p em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* ========================================
+   PULL QUOTES
+   ======================================== */
+
+.pull-quote {
+  padding: 2rem 0;
+  margin: 2rem 0;
+  border-top: 1px solid var(--color-fg-faint);
+  border-bottom: 1px solid var(--color-fg-faint);
+}
+
+.pull-quote blockquote {
+  font-family: var(--heading-font-family);
+  font-size: var(--pull-quote);
+  font-style: italic;
+  line-height: var(--line-height-pull-quote);
+  color: var(--color-fg);
+}
+
+.pull-quote blockquote strong {
+  color: var(--color-tertiary);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* ========================================
+   STAT HIGHLIGHT
+   ======================================== */
+
+.stat-highlight {
+  margin: 2.5rem 0;
+  padding: 2.5rem;
+  border: 1px solid rgba(245, 240, 232, 0.08);
+  border-radius: var(--radius-card);
+  text-align: center;
+}
+
+.stat-value {
+  font-family: var(--heading-font-family);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-family: var(--body-font-family);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-fg-dim);
+}
+
+/* ========================================
+   CTA
+   ======================================== */
+
+.editorial-cta {
+  padding: 5rem var(--section-padding) 6rem;
+  text-align: center;
+}
+
+.editorial-cta h2 {
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-xl);
+  font-weight: 700;
+  line-height: var(--line-height-heading);
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.editorial-cta h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.editorial-cta p {
+  font-family: var(--body-font-family);
+  font-size: var(--body-sm);
+  color: var(--color-fg-dim);
+  margin-bottom: 2.5rem;
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: var(--line-height-body);
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: var(--color-accent);
+  color: var(--color-bg);
+  text-decoration: none;
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  font-size: var(--button);
+  letter-spacing: var(--letter-spacing-button);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  border: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.cta-btn:hover {
+  background: var(--color-fg);
+  transform: translateY(-2px);
+}
+
+.cta-btn-secondary {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: transparent;
+  color: var(--color-fg);
+  text-decoration: none;
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  font-size: var(--button);
+  letter-spacing: var(--letter-spacing-button);
+  text-transform: uppercase;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(245, 240, 232, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.cta-btn-secondary:hover {
+  border-color: var(--color-fg);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.site-footer {
+  padding: 3rem var(--section-padding);
+  border-top: 1px solid var(--color-fg-faint);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-family: var(--body-font-family);
+  font-size: 0.65rem;
+  color: var(--color-fg-muted);
+  letter-spacing: 0.1em;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-attribution {
+  font-size: 0.6rem;
+  color: rgba(245, 240, 232, 0.45);
+  line-height: 1.6;
+}
+
+.footer-attribution a {
+  color: rgba(245, 240, 232, 0.45);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+}
+
+.footer-attribution a:hover {
+  color: var(--color-fg);
+}
+
+/* ========================================
+   MOBILE
+   ======================================== */
+
+@media (max-width: 600px) {
+  .editorial-hero {
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  .editorial-cta {
+    padding: 3rem var(--section-padding) 4rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .site-header {
+    padding: 0.8rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .site-nav {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .site-nav .nav-cta {
+    flex-basis: 100%;
+    text-align: center;
+    margin-top: 0.3rem;
+  }
+}
