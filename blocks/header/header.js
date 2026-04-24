@@ -18,7 +18,7 @@ function normalizePath(p) {
 }
 
 export default async function decorate(block) {
-  const res = await fetch(`${window.hlx.codeBasePath}/nav.plain.html`);
+  const res = await fetch(`${window.hlx.codeBasePath}/nav.html`);
   if (!res.ok) return;
   const html = await res.text();
 

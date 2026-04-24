@@ -22,7 +22,7 @@ import {
 /** Derive page slug from URL. `/` → `landing`, `/why` → `why`, `/foo.html` → `foo`. */
 function pageSlug() {
   const p = window.location.pathname;
-  if (p === '/' || p === '') return 'landing';
+  if (p === '/' || p === '' || p === '/index.html' || p === '/index') return 'landing';
   return p.replace(/^\//, '').replace(/\.html$/, '').replace(/\/$/, '');
 }
 
